@@ -4,7 +4,7 @@ import './App.scss';
 import NewTaskComponent from './components/NewTaskComponent/NewTaskComponent';
 import ContainerComponent from './components/ContainerComponent/ContainerComponent';
 
-function App() {
+const App = () => {
   const [tasks, setTasks] = useState([]);
   
   useEffect( () => {
@@ -13,8 +13,6 @@ function App() {
   });
 }, []);
 
-  console.log('tasks', tasks); 
-  //onChangeCheckbox
   return (
    <div className='main'>
      <header>
