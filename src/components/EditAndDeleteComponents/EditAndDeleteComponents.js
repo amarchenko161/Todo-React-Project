@@ -3,7 +3,7 @@ import axios from "axios";
 import EditIcon from "@mui/icons-material/Edit";
 import DeleteForeverIcon from "@mui/icons-material/DeleteForever";
 
-const EditAndDeleteButtonComponents = ({ data, setTasks, setState, index }) => {
+const EditAndDeleteComponents = ({ data, setTasks, setState, index, task }) => {
 
   const deleteTask = async (index) => {
     await axios
@@ -11,15 +11,15 @@ const EditAndDeleteButtonComponents = ({ data, setTasks, setState, index }) => {
       .then((res) => {
         setTasks(res.data.data);
       });
-  };
+  }
 
   return (
     <>
+    <span onDoubleClick={() => setState(true)}>{task.text}</span>
     <EditIcon onClick={() => setState(true)} />
     <DeleteForeverIcon onClick={() => deleteTask(index)} />
     </>
   )
 }
 
-
- export default EditAndDeleteButtonComponents
+export default EditAndDeleteComponents

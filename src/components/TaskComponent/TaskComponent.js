@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
-import EditAndDeleteButtonComponents from "../EditAndDeleteButtonComponents/EditAndDeleteButtonComponents";
-import AcceptAndCancelButtonComponent from "../AcceptAndCancelButtonComponent/AcceptAndCancelButtonComponent";
+import EditAndDeleteComponents from "../EditAndDeleteComponents/EditAndDeleteComponents";
+import AcceptAndCancelComponent from "../AcceptAndCancelComponent/AcceptAndCancelComponent";
 
 const TaskComponent = ({ data, setTasks, index, task }) => {
   const [state, setState] = useState(false);
@@ -9,15 +9,14 @@ const TaskComponent = ({ data, setTasks, index, task }) => {
 
   const changeCheckbox = async (index) => {
     let { _id, isCheck } = data[index];
-    await axios
-      .patch("http://localhost:8000/updateTask", {
+    await axios.patch("http://localhost:8000/updateTask", {
         _id,
         isCheck: !isCheck,
       })
       .then((res) => {
         setTasks(res.data.data);
       });
-  };
+  }
 
   return (
     <div key={`task-${index}`}>
@@ -27,34 +26,31 @@ const TaskComponent = ({ data, setTasks, index, task }) => {
         checked={task.isCheck}
         onChange={() => changeCheckbox(index)}
       />
-      {state ? (
+
+      {state ? 
         <>
-          <input
-            type="text"
-            value={text}
-            onChange={(e) => setText(e.target.value)}
-          />
-          < AcceptAndCancelButtonComponent 
+          < AcceptAndCancelComponent 
               data={data}
               text={text}
               setTasks={setTasks}
               index={index}
               setState={setState}
+              setText = {setText}
           />
         </>
-      ) : (
+      : 
         <>
-          <span onDoubleClick={() => setState(true)}>{task.text}</span>
-          <EditAndDeleteButtonComponents
+          <EditAndDeleteComponents
             data={data}
             setTasks={setTasks}
             setState={setState}
             index={index}
+            task={task}
           />
         </>
-      )}
+      }
     </div>
-  );
-};
+  )
+}
 
 export default TaskComponent;
