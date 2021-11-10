@@ -1,0 +1,25 @@
+.add-new-task{
+  display: flex;
+  color: white;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+
+  label {
+    color: white;
+  }
+
+  input {
+    border-color: white;
+    color: white;
+  }
+
+  .css-1480iag-MuiInputBase-root-MuiInput-root:before {
+    border-bottom: 1px solid white;
+  }
+
+  .css-sghohy-MuiButtonBase-root-MuiButton-root {
+    margin: 13px 3px;
+  }
+}
