@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import './App.scss';
 import NewTaskComponent from './components/NewTaskComponent/NewTaskComponent';
 import ContainerComponent from './components/ContainerComponent/ContainerComponent';
+import './App.scss';
 
 const App = () => {
   const [tasks, setTasks] = useState([]);

@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import EditAndDeleteComponents from "../EditAndDeleteComponents/EditAndDeleteComponents";
 import AcceptAndCancelComponent from "../AcceptAndCancelComponent/AcceptAndCancelComponent";
+import './TaskComponent.scss';
 
 const TaskComponent = ({ data, setTasks, index, task }) => {
   const [state, setState] = useState(false);
@@ -18,9 +19,10 @@ const TaskComponent = ({ data, setTasks, index, task }) => {
   }
 
   return (
-    <div key={`task-${index}`}>
+    <div key={`task-${index}`} className="div-content">
       <input
         type="checkbox"
+        className="checkbox-style"
         key={`task-${index}`}
         checked={task.isCheck}
         onChange={() => changeCheckbox(index)}

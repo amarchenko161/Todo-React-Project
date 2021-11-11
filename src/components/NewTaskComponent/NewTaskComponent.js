@@ -3,7 +3,7 @@ import axios from 'axios';
 import { TextField } from '@mui/material';
 import Button from '@mui/material/Button';
 import SendIcon from '@mui/icons-material/Send';
-import './NewTaskComponent.scss'
+import './NewTaskComponent.scss';
 
 const NewTaskComponent = ({data, setTasks}) => {
   const [text, setText] = useState('');
