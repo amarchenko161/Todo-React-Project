@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import AddIcon from "@mui/icons-material/Add";
 import CloseIcon from "@mui/icons-material/Close";
+import './AcceptAndCancelComponent.scss';
 
 const AcceptAndCancelComponent = ({data, setTasks, index, setState, task}) => {
   const [text, setText] = useState(task.text);
@@ -23,6 +24,7 @@ const AcceptAndCancelComponent = ({data, setTasks, index, setState, task}) => {
       <input
         type="text"
         value={text}
+        className="edit-input-style"
         onChange={(e) => setText(e.target.value)}
       />
       <AddIcon
@@ -30,8 +32,9 @@ const AcceptAndCancelComponent = ({data, setTasks, index, setState, task}) => {
           saveTask(index);
           setState(false);
         }}
+        className='size-icon'
       />
-      <CloseIcon onClick={() => setState(false)} />
+      <CloseIcon onClick={() => setState(false)} className='size-icon' />
     </>
   );
 }
