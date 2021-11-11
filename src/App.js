@@ -16,7 +16,7 @@ const App = () => {
   return (
    <div className='main'>
      <header>
-       <h1>To do list</h1>
+       <h1 className='title'>To do list</h1>
        <NewTaskComponent data={tasks} setTasks={setTasks} />
      </header>
      <ContainerComponent tasks={tasks} setTasks={setTasks} />

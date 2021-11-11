@@ -20,8 +20,7 @@ const EditAndDeleteComponents = ({ data, setTasks, setState, index, task }) => {
       <span
         onDoubleClick={() => setState(true)}
         className={isCheck ? "span-style-decor" : "span-style"}
-      >
-        {text}{" "}
+      > {text}
       </span>
       <EditIcon
         onClick={() => setState(true)}
