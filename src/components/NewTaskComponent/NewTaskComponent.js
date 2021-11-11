@@ -32,6 +32,7 @@ const NewTaskComponent = ({data, setTasks}) => {
        onClick = {() => addNewTask()} 
        variant="contained" 
        endIcon={<SendIcon />}
+       className='add-button'
      > Add 
     </Button>
   </div>

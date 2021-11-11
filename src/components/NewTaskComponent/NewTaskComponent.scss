@@ -1,4 +1,4 @@
-.add-new-task{
+.add-new-task {
   display: flex;
   color: white;
   width: 100vw;
@@ -26,12 +26,14 @@
   .MuiFormControl-root {
     width: 70%
   }
+
+  .add-button{
+    text-transform: none;
+  }
 }
 
 @media screen and (max-width:281px) {
-  add-new-task{
-    
+  add-new-task {    
     width: 95vw;
-    
   }
 }

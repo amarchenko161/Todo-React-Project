@@ -34,7 +34,7 @@ const AcceptAndCancelComponent = ({data, setTasks, index, setState, task}) => {
         }}
         className='size-icon'
       />
-      <CloseIcon onClick={() => setState(false)} className='size-icon'/>
+      <CloseIcon onClick={() => setState(false)} className='size-icon' />
     </>
   );
 }
