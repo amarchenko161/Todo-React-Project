@@ -4,7 +4,7 @@ import TaskComponent from "../TaskComponent/TaskComponent";
 const ContainerComponent = ({ tasks, setTasks }) => {
   return (
     <div>
-      {tasks.map((task, index) => (
+      {tasks.sort((a,b) =>  a.isCheck - b.isCheck ).map((task, index) => (
         <TaskComponent
           key={`task-${index}`}
           data={tasks}

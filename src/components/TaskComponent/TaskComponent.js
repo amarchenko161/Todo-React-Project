@@ -5,10 +5,9 @@ import AcceptAndCancelComponent from "../AcceptAndCancelComponent/AcceptAndCance
 
 const TaskComponent = ({ data, setTasks, index, task }) => {
   const [state, setState] = useState(false);
-  const [text, setText] = useState(task.text);
 
   const changeCheckbox = async (index) => {
-    let { _id, isCheck } = data[index];
+    const { _id, isCheck } = data[index];
     await axios.patch("http://localhost:8000/updateTask", {
         _id,
         isCheck: !isCheck,
@@ -28,18 +27,14 @@ const TaskComponent = ({ data, setTasks, index, task }) => {
       />
 
       {state ? 
-        <>
           < AcceptAndCancelComponent 
               data={data}
-              text={text}
               setTasks={setTasks}
               index={index}
               setState={setState}
-              setText = {setText}
+              task={task}
           />
-        </>
       : 
-        <>
           <EditAndDeleteComponents
             data={data}
             setTasks={setTasks}
@@ -47,7 +42,6 @@ const TaskComponent = ({ data, setTasks, index, task }) => {
             index={index}
             task={task}
           />
-        </>
       }
     </div>
   )
