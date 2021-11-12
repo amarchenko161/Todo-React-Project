@@ -1,23 +1,34 @@
 import React, { useState } from "react";
+import { useHistory } from "react-router-dom";
 import axios from "axios";
 import AddIcon from "@mui/icons-material/Add";
 import CloseIcon from "@mui/icons-material/Close";
-import './AcceptAndCancelComponent.scss';
 
-const AcceptAndCancelComponent = ({data, setTasks, index, setState, task}) => {
+import "./AcceptAndCancelComponent.scss";
+
+const AcceptAndCancelComponent = ({ setTasks, task }) => {
   const [text, setText] = useState(task.text);
+  const history = useHistory();
 
-  const saveTask = async (index) => {
-    const { _id, isCheck } = data[index];
-    await axios.patch("http://localhost:8000/updateTask", {
-      _id,
-      text,
-      isCheck,
-    })
-    .then((res) => {
-      setTasks(res.data.data);
-    });
-  }
+  const saveTask = async () => {
+    if (text.trim()) {
+      const { _id } = task;
+      await axios
+        .patch("http://localhost:8000/updateTask", {
+          _id,
+          text,
+        })
+        .then((res) => {
+          setTasks(res.data.data);
+        });
+    } else {
+      alert("Проверьте заполненность поля");
+    }
+  };
+
+  const backPage = () => {
+    history.push(`/home`);
+  };
 
   return (
     <>
@@ -27,16 +38,18 @@ const AcceptAndCancelComponent = ({data, setTasks, index, setState, task}) => {
         className="edit-input-style"
         onChange={(e) => setText(e.target.value)}
       />
-      <AddIcon
-        onClick={() => {
-          saveTask(index);
-          setState(false);
-        }}
-        className='size-icon'
-      />
-      <CloseIcon onClick={() => setState(false)} className='size-icon' />
+      <div className="icon-style">
+        <AddIcon
+          onClick={() => {
+            saveTask();
+            backPage();
+          }}
+          className="size-icon"
+        />
+        <CloseIcon className="size-icon" onClick={() => backPage()} />
+      </div>
     </>
   );
-}
+};
 
 export default AcceptAndCancelComponent;
